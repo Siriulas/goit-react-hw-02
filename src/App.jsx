@@ -28,12 +28,15 @@ export default function App() {
     
 
 
-  return (
+   return (
     <>
-    <Description/>
-    <Options updateFeedback={updateFeedback} reset={resetFeedback} total={totalFeedback} />
-    <Feedback good={data.good}  neutral={data.neutral} bad={data.bad} total={totalFeedback} percent={positivePercentage} />
-    <Notification total={totalFeedback}/>
+      <Description />
+      <Options updateFeedback={updateFeedback} reset={resetFeedback} total={totalFeedback} />
+      {totalFeedback > 0 ? (
+        <Feedback good={data.good} neutral={data.neutral} bad={data.bad} total={totalFeedback} percent={positivePercentage} />
+      ) : (
+        <Notification total={totalFeedback} />
+      )}
     </>
-  )
+  );
 }
